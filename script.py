@@ -33,7 +33,7 @@ print('parameter_file:', parameter_file)
 # Identify the EPSG projection code
 if len(parameter_file) == 1 :
     parameters = pd.read_csv(parameter_file[0])
-    projection = parameters.loc[1][1]
+    projection = parameters.loc[2][1]
     print('projection:',projection)
 else:
     projection = os.getenv('PROJECTION')
