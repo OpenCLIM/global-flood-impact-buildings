@@ -81,6 +81,8 @@ for i in range (0,len(building_files)):
     filename=file_path[0].split("/")
     to_merge[i]=filename[4]+'.gpkg'
 
+print('to_merge:',to_merge)
+
 # Create a geodatabase and merge the data from each gpkg together
 all_builds = []
 all_builds=gpd.GeoDataFrame(all_builds)
