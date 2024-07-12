@@ -8,7 +8,7 @@ metadata:
   publisher: Newcastle University
   summary: >
     This model takes building polygons supplied by the user, clips the data to the domain and ensures the data is in the correct projection.
-  source_code: https://github.com/OpenCLIM/vector-mesh
+  source_code: https://github.com/OpenCLIM/global-flood-impact-buildings/
   description: >
     The CityCAT model relies on building footprint data. Open source data can be obtained from Open Street Map (https://www.openstreetmap.org/),
     Open Buildings (https://sites.research.google/open-buildings/) etc. This model accepts building data in .gpkg format, clips the data to the
