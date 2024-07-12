@@ -1,5 +1,5 @@
 # vector-mesh
-This model takes national scale datasets and clips them to a geographical area.
+This model takes building polygons supplied by the user, clips the data to the domain and ensures the data is in the correct projection.
 
 ## Description
 The CityCAT model relies on building footprint data. Open source data can be obtained from Open Street Map (https://www.openstreetmap.org/),
