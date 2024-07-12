@@ -1,17 +1,19 @@
 kind: M
-api_version: v1beta2
+api_version: v1beta3
 metadata:
-  display_name: Urban_Flooding:Extract Buildings
-  name: vector-mesh
+  display_name: Global Urban_Flooding:Extract Buildings
+  contact_point_name: Olivia Butters
+  contact_point_email: olivia.butters@newcastle.ac.uk
+  name: global-building-inputs
   publisher: Newcastle University
   summary: >
-    This model takes national scale datasets and clips them to a geographical area.
+    This model takes building polygons supplied by the user, clips the data to the domain and ensures the data is in the correct projection.
   source_code: https://github.com/OpenCLIM/vector-mesh
   description: >
-    National scale datasets are too large to upload onto DAFNI, and processing these large datasets is time extensive. Models such as City Catchment Analysis Tool,
-    require vector data from the national datasets for a city of interest. The national data sets have been uploaded onto DAFNI in zip format for each 100km OS grid cell. 
-    Geopackage files within the zip folders contain the vector data per 5km OS grid cell. This model identifies which 5km grid cells are contained within the boundary 
-    file for the city of interest, and merges the geopackage to generate a single gpkg file for the city.
+    The CityCAT model relies on building footprint data. Open source data can be obtained from Open Street Map (https://www.openstreetmap.org/),
+    Open Buildings (https://sites.research.google/open-buildings/) etc. This model accepts building data in .gpkg format, clips the data to the
+    selected area, and ensures all data is in the same projection. If the file sizes are too large, multiple .gpkgs can be added directly, or zipped.
+
 
 spec:
   inputs:
@@ -22,24 +24,16 @@ spec:
         path: inputs/boundary/
         required: false
 
-      - name: Grids
-        description:
-          The 5km OS grid cells for the UK.
-        default:
-          - 7358511d-76ec-484b-8996-66af6e6ea8de
-        path: inputs/grids/
-        required: false
-
       - name: Vectors
         description:
-          National vector datasets (saved by OS grid cells).
-        default:
-          - 0eed4eb0-9795-414d-9008-939b8ebf8821
-          - 4da2cddf-f626-40f5-959d-a16e57ffe806
-          - df89bca6-13f7-49c3-b373-72787eb52622
-          - 8164524d-d9fc-4b2d-9388-43a222d6ac3c
-          - 1fe727df-13e2-45ee-9ec7-c6e9f8dbbe3c
+          Building polygons saved in .gpkg format. Zipped .gpkg files will also be accepted. 
         path: inputs/vectors/
+        required: True
+
+      - name: Parameters
+        description:
+          All input parameters and their values are stored in a csv file.
+        path: inputs/parameters/
         required: false
          
         
@@ -49,4 +43,3 @@ spec:
         type: folder
         description:
           A gpgk of existing building data for the city of interest.
-        
