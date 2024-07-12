@@ -28,6 +28,8 @@ spec:
         description:
           Building polygons saved in .gpkg format. Zipped .gpkg files will also be accepted. 
         path: inputs/vectors/
+        default: 
+        - 63740443-15c8-46e0-9229-c45446635ba5
         required: True
 
       - name: Parameters
