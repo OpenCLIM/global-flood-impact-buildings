@@ -73,9 +73,10 @@ print(building_files_zip)
 
 # If yes, unzip the file (if the user has formatted the data correctly, this should reveal a .gpkg)
 if len(building_files_zip) != 0:
-    print('zip file found')
-    with ZipFile(building_files_zip[0],'r') as zip:
-        zip.extractall(vector_path)
+    for i in range (0,len(building_files_zip)):
+        print('zip file found')
+        with ZipFile(building_files_zip[i],'r') as zip:
+            zip.extractall(vector_path)
 
 # Identify geopackages containing the polygons of the buildings
 building_files = glob(vector_path + "/*.gpkg", recursive = True)
