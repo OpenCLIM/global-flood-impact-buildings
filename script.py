@@ -103,5 +103,17 @@ all_builds.to_crs(epsg=projection, inplace=True)
 
 clipped = gpd.clip(all_builds,boundary)
 
-# Print to a gpkg file
-clipped.to_file(os.path.join(buildings_path, location + '.gpkg'),driver='GPKG',index=False)
+all_builds = clipped.to_file(os.path.join(outputs_path,'all_buildings.shp'))
+all_builds = gpd.read_file(os.path.join(outputs_path,'all_buildings.shp'))
+all_builds = all_builds.explode()
+all_builds.reset_index(inplace=True, drop=True)
+all_builds1 = all_builds.to_file(os.path.join(buildings_path, location + '.gpkg'),driver='GPKG',index=False)
+
+os.remove(os.path.join(outputs_path,'all_buildings.shp'))
+os.remove(os.path.join(outputs_path,'all_buildings.cpg'))
+os.remove(os.path.join(outputs_path,'all_buildings.dbf'))
+os.remove(os.path.join(outputs_path,'all_buildings.prj'))
+os.remove(os.path.join(outputs_path,'all_buildings.shx'))
+
+# # Print to a gpkg file
+# clipped.to_file(os.path.join(buildings_path, location + '.gpkg'),driver='GPKG',index=False)
